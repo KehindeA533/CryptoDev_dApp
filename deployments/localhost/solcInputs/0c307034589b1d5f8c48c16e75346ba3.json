@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Whitelist.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.9;\n\n/*//////////////////////////////////////////////////////////////   \n                        Custom Errors\n//////////////////////////////////////////////////////////////*/\nerror addAddressToWhitelist_SenderAlreadyWhitelisted();\nerror addAddressToWhitelist_AddressesLimitReached();\n\n/// @title Whitelist dApp\n/// @author Kehinde A.\n/// @notice You can use this contract for creating a whitelist dapp when you are launching your NFT collection\ncontract Whitelist {\n    /*//////////////////////////////////////////////////////////////   \n                            Variables\n    //////////////////////////////////////////////////////////////*/\n\n    //Max number of whitelisted addresses allowed\n    uint8 private immutable i_maxWhitelistedAddresses;\n\n    // Create a mapping of whitelistedAddresses\n    // if an address is whitelisted, we would set it to true, it is false by default for all other addresses.\n    mapping(address => bool) public s_whitelistedAddresses;\n\n    // numAddressesWhitelisted would be used to keep track of how many addresses have been whitelisted\n    // NOTE: Don't change this variable name, as it will be part of verification\n    uint8 s_numAddressesWhitelisted;\n\n    /*//////////////////////////////////////////////////////////////   \n                        Constructor Functions\n    //////////////////////////////////////////////////////////////*/\n\n    // Setting the Max number of whitelisted addresses\n    // User will put the value at the time of deployment\n    constructor(uint8 _maxWhitelistedAddresses) {\n        i_maxWhitelistedAddresses = _maxWhitelistedAddresses;\n    }\n\n    /*//////////////////////////////////////////////////////////////   \n                            Functions\n    //////////////////////////////////////////////////////////////*/\n\n    /// @notice This function adds the address of the sender to the whitelist\n    function addAddressToWhitelist() public {\n        //check if the user has already been whitelisted\n        if (s_whitelistedAddresses[msg.sender]) {\n            revert addAddressToWhitelist_SenderAlreadyWhitelisted();\n        }\n\n        // check if the numAddressesWhitelisted > maxWhitelistedAddresses, if not then throw an error.\n        if (s_numAddressesWhitelisted > i_maxWhitelistedAddresses) {\n            revert addAddressToWhitelist_AddressesLimitReached();\n        }\n\n        // Add the address which called the function to the whitelistedAddress array\n        s_whitelistedAddresses[msg.sender] = true;\n\n        // Increase the number of whitelisted addresses\n        s_numAddressesWhitelisted += 1;\n    }\n\n    /*//////////////////////////////////////////////////////////////   \n                            Getter Functions\n    //////////////////////////////////////////////////////////////*/\n    function getMaxWhitelistedAddresses() public view returns (uint8) {\n        return i_maxWhitelistedAddresses;\n    }\n\n    function getWhitelistedAddresses(address index) public view returns (bool) {\n        return s_whitelistedAddresses[index];\n    }\n\n    function getNumAddressesWhitelisted() public view returns (uint8) {\n        return s_numAddressesWhitelisted;\n    }\n}\n// -----------------------------------------\n// Contract whitelist deployed at: 0x685F9Bf3339eaDa1484D574ab028880D3adC29Fb\n// -----------------------------------------\n// Successfully verified contract Whitelist on Etherscan.\n// https://goerli.etherscan.io/address/0xa19b4306455ec5964C774850ef30021208eaa2Ce#code\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

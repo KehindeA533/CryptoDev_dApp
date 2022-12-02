@@ -1,0 +1,166 @@
+{
+  "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "purchase_NotEnoughETH",
+      "type": "error"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "available",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getNFTPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getOwnerOfToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "purchase",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x5baec4f670c6caff14b6150977adaf997cab4ac7174817fbff03b2f796c4dc69",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "transactionIndex": 0,
+    "gasUsed": "260606",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x517f03d541aa5266b6ac3e04cdabb4cda06925effdc7177a254bef95e34905ab",
+    "transactionHash": "0x5baec4f670c6caff14b6150977adaf997cab4ac7174817fbff03b2f796c4dc69",
+    "logs": [],
+    "blockNumber": 4,
+    "cumulativeGasUsed": "260606",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b4d254737b37957149864b1f9a4bbc64",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"purchase_NotEnoughETH\",\"type\":\"error\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"available\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNFTPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"getOwnerOfToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"purchase\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"author\":\"Kehinde A.\",\"kind\":\"dev\",\"methods\":{\"available(uint256)\":{\"details\":\"avaiable() checks whether the given tokenId has already been sold or not\",\"params\":{\"_tokenId\":\"- the fake NFT token Id to purchsae\"}},\"getNFTPrice()\":{\"details\":\"getPrice() returns the price of one NFT\"},\"getOwnerOfToken(uint256)\":{\"details\":\"getOwnerOfToken returns the address of the token owner based on the inputed Id\"},\"purchase(uint256)\":{\"params\":{\"_tokenId\":\"- the nft token Id to purchase\"}}},\"title\":\"NFT marketplace\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"A Crypto Dev Marketplace. A simplified NFT marketplace to be able to purchase NFTs automatically when a proposal is passed.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/NFTMarketplace.sol\":\"NFTMarketplace\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/NFTMarketplace.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.5;\\r\\n\\r\\n/*//////////////////////////////////////////////////////////////   \\r\\n                            Custom Errors\\r\\n//////////////////////////////////////////////////////////////*/\\r\\nerror purchase_NotEnoughETH();\\r\\n\\r\\n/// @title NFT marketplace\\r\\n/// @author Kehinde A.\\r\\n/// @notice A Crypto Dev Marketplace. A simplified NFT marketplace to be able to purchase NFTs automatically when a proposal is passed.\\r\\ncontract NFTMarketplace {\\r\\n    /*//////////////////////////////////////////////////////////////   \\r\\n                            State Variables\\r\\n    //////////////////////////////////////////////////////////////*/\\r\\n    // Maintain a mapping of TokenID to Owner addressess\\r\\n    mapping(uint256 => address) private tokens;\\r\\n\\r\\n    // Set the purchase price for each NFT\\r\\n    uint256 private constant NFTPRICE = 0.1 ether;\\r\\n\\r\\n    /*//////////////////////////////////////////////////////////////   \\r\\n                            Functions\\r\\n    //////////////////////////////////////////////////////////////*/\\r\\n\\r\\n    // @Dev purchase() accepts ETH and marks the owner of the given tokenID as the caller address\\r\\n    /// @param _tokenId - the nft token Id to purchase\\r\\n    function purchase(uint256 _tokenId) external payable {\\r\\n        if (msg.value != NFTPRICE) {\\r\\n            revert purchase_NotEnoughETH();\\r\\n        }\\r\\n\\r\\n        tokens[_tokenId] = msg.sender;\\r\\n    }\\r\\n\\r\\n    /// @dev avaiable() checks whether the given tokenId has already been sold or not\\r\\n    /// @param _tokenId - the fake NFT token Id to purchsae\\r\\n    function available(uint256 _tokenId) external view returns (bool) {\\r\\n        if (tokens[_tokenId] == address(0)) {\\r\\n            return true;\\r\\n        }\\r\\n        return false;\\r\\n    }\\r\\n\\r\\n    receive() external payable {}\\r\\n\\r\\n    fallback() external payable {}\\r\\n\\r\\n    /*//////////////////////////////////////////////////////////////   \\r\\n                            Functions\\r\\n    //////////////////////////////////////////////////////////////*/\\r\\n    /// @dev getOwnerOfToken returns the address of the token owner based on the inputed Id\\r\\n    // @param id - the Id corespponding to the token owner\\r\\n    function getOwnerOfToken(uint256 id) public view returns (address) {\\r\\n        return tokens[id];\\r\\n    }\\r\\n\\r\\n    /// @dev getPrice() returns the price of one NFT\\r\\n    function getNFTPrice() public pure returns (uint256) {\\r\\n        return NFTPRICE;\\r\\n    }\\r\\n}\\r\\n/**\\r\\n * NFTMarketplace Contract deployed at: 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9\\r\\n */\\r\\n\",\"keccak256\":\"0x5817950ec611821ce782f8860e11d231c5d575ac2a68451852f8d945dba8c5ee\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506103c3806100206000396000f3fe6080604052600436106100435760003560e01c80637f1dd80b1461004c57806396e494e814610089578063efef39a1146100c6578063fb107a4f146100e25761004a565b3661004a57005b005b34801561005857600080fd5b50610073600480360381019061006e91906102a4565b61010d565b6040516100809190610312565b60405180910390f35b34801561009557600080fd5b506100b060048036038101906100ab91906102a4565b610149565b6040516100bd9190610348565b60405180910390f35b6100e060048036038101906100db91906102a4565b6101c4565b005b3480156100ee57600080fd5b506100f7610259565b6040516101049190610372565b60405180910390f35b600080600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b60008073ffffffffffffffffffffffffffffffffffffffff1660008084815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156101ba57600190506101bf565b600090505b919050565b67016345785d8a00003414610205576040517f8bca4abf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b3360008083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600067016345785d8a0000905090565b600080fd5b6000819050919050565b6102818161026e565b811461028c57600080fd5b50565b60008135905061029e81610278565b92915050565b6000602082840312156102ba576102b9610269565b5b60006102c88482850161028f565b91505092915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006102fc826102d1565b9050919050565b61030c816102f1565b82525050565b60006020820190506103276000830184610303565b92915050565b60008115159050919050565b6103428161032d565b82525050565b600060208201905061035d6000830184610339565b92915050565b61036c8161026e565b82525050565b60006020820190506103876000830184610363565b9291505056fea2646970667358221220055e1cf10dbcace3bdd8ad73975590591c159913a131976c1f2443dc076944de64736f6c63430008090033",
+  "deployedBytecode": "0x6080604052600436106100435760003560e01c80637f1dd80b1461004c57806396e494e814610089578063efef39a1146100c6578063fb107a4f146100e25761004a565b3661004a57005b005b34801561005857600080fd5b50610073600480360381019061006e91906102a4565b61010d565b6040516100809190610312565b60405180910390f35b34801561009557600080fd5b506100b060048036038101906100ab91906102a4565b610149565b6040516100bd9190610348565b60405180910390f35b6100e060048036038101906100db91906102a4565b6101c4565b005b3480156100ee57600080fd5b506100f7610259565b6040516101049190610372565b60405180910390f35b600080600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b60008073ffffffffffffffffffffffffffffffffffffffff1660008084815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614156101ba57600190506101bf565b600090505b919050565b67016345785d8a00003414610205576040517f8bca4abf00000000000000000000000000000000000000000000000000000000815260040160405180910390fd5b3360008083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b600067016345785d8a0000905090565b600080fd5b6000819050919050565b6102818161026e565b811461028c57600080fd5b50565b60008135905061029e81610278565b92915050565b6000602082840312156102ba576102b9610269565b5b60006102c88482850161028f565b91505092915050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b60006102fc826102d1565b9050919050565b61030c816102f1565b82525050565b60006020820190506103276000830184610303565b92915050565b60008115159050919050565b6103428161032d565b82525050565b600060208201905061035d6000830184610339565b92915050565b61036c8161026e565b82525050565b60006020820190506103876000830184610363565b9291505056fea2646970667358221220055e1cf10dbcace3bdd8ad73975590591c159913a131976c1f2443dc076944de64736f6c63430008090033",
+  "devdoc": {
+    "author": "Kehinde A.",
+    "kind": "dev",
+    "methods": {
+      "available(uint256)": {
+        "details": "avaiable() checks whether the given tokenId has already been sold or not",
+        "params": {
+          "_tokenId": "- the fake NFT token Id to purchsae"
+        }
+      },
+      "getNFTPrice()": {
+        "details": "getPrice() returns the price of one NFT"
+      },
+      "getOwnerOfToken(uint256)": {
+        "details": "getOwnerOfToken returns the address of the token owner based on the inputed Id"
+      },
+      "purchase(uint256)": {
+        "params": {
+          "_tokenId": "- the nft token Id to purchase"
+        }
+      }
+    },
+    "title": "NFT marketplace",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "notice": "A Crypto Dev Marketplace. A simplified NFT marketplace to be able to purchase NFTs automatically when a proposal is passed.",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4020,
+        "contract": "contracts/NFTMarketplace.sol:NFTMarketplace",
+        "label": "tokens",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_uint256,t_address)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_uint256,t_address)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => address)",
+        "numberOfBytes": "32",
+        "value": "t_address"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
