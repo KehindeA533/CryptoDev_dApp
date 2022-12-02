@@ -8,8 +8,7 @@ const { developmentChains, metadataURL } = require('../helper-hardhat-config')
       let nftCollection, whitelist, deployer, nftPrice
 
       beforeEach(async () => {
-        deployer = (await getNamedAccounts()).deployer // Global
-        // const { deployer } = await getNamedAccounts() // Not Global
+        deployer = (await getNamedAccounts()).deployer 
         await deployments.fixture(['all'])
         nftCollection = await ethers.getContract('NFTCollection', deployer)
         whitelist = await ethers.getContract('Whitelist', deployer)
@@ -54,7 +53,6 @@ const { developmentChains, metadataURL } = require('../helper-hardhat-config')
             it('Fails if presale has eneded', async () => {
               await nftCollection.startPresale()
 
-              // increase the time by 5 minutes
               await network.provider.send('evm_increaseTime', [300])
               await network.provider.send('evm_mine', [])
               await expect(
@@ -73,30 +71,30 @@ const { developmentChains, metadataURL } = require('../helper-hardhat-config')
                 'presaleMint_NotOnWhitelist'
               )
             })
-            // it('Fails if tokenId attempts to go over max', async () => {
-            //   await nftCollection.startPresale()
-            //   const additionalUser = 11
-            //   const startingUserIndex = 1 // deployer = 0
-            //   const accounts = await ethers.getSigners()
-            //   for (
-            //     let i = startingUserIndex;
-            //     i <= startingUserIndex + additionalUser;
-            //     i++
-            //   ) {
-            //     //Add address to whitelist
-            //     const userAddToWhitelist = whitelist.connect(accounts[i])
-            //     await userAddToWhitelist.addAddressToWhitelist()
+            it('Fails if tokenId attempts to go over max', async () => {
+              await nftCollection.startPresale()
+              const additionalUser = 11
+              const startingUserIndex = 1 // deployer = 0
+              const accounts = await ethers.getSigners()
+              for (
+                let i = startingUserIndex;
+                i <= startingUserIndex + additionalUser;
+                i++
+              ) {
+                //Add address to whitelist
+                const userAddToWhitelist = whitelist.connect(accounts[i])
+                await userAddToWhitelist.addAddressToWhitelist()
 
-            //     //presaleMint
-            //     const userAddToNFTCollection = nftCollection.connect(
-            //       accounts[i]
-            //     )
-            //     await userAddToNFTCollection.presaleMint({ value: nftPrice })
-            //   }
+                //presaleMint
+                const userAddToNFTCollection = nftCollection.connect(
+                  accounts[i]
+                )
+                await userAddToNFTCollection.presaleMint({ value: nftPrice })
+              }
 
-            //   const numOfTokens = await nftCollection.getTokenIds()
-            //   console.log(numOfTokens.toNumber())
-            // })
+              const numOfTokens = await nftCollection.getTokenIds()
+              console.log(numOfTokens.toNumber())
+            })
             it('fails if not enough ETH is sent', async () => {
               await whitelist.addAddressToWhitelist()
               await nftCollection.startPresale()
