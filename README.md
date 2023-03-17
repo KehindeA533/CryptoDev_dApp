@@ -1,7 +1,7 @@
 # CryptoDev Project
 
 ## Whitelist
-CryptoDev is a NFT Collection and to give early supporters access to my collection, this website allows the first 10 users  to go and enter into the whitelist for free.
+CryptoDev Whitelist gives early supporters access to my collection, this website allows the first 10 users  to go and enter into the whitelist for free.
 
 ## NFT Collection
 The CryptoDev NFT Collection is a collection of 20 NFT and each one of them are unique. User's will be able to mint only 1 NFT with one transaction. Whitelisted users, will have a 5 min presale period before the actual sale where they are guaranteed 1 NFT per transaction.
